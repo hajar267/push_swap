@@ -6,15 +6,11 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/08 17:05:46 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/08 18:34:22 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NULL
-#include <sys/_types.h>
-#define NULL   __DARWIN_NULL
-#endif
-#include<stdlib.h>
+#include"push_swap.h"
 
 static	int	somft(char	*str, int i)
 {
@@ -55,12 +51,6 @@ int	ft_atoi(char *str)
 	som = somft(str, i);
 	return (som * sign);
 }
-
-typedef struct s_list
-{
-    struct s_list   *next;
-    int             data;
-}t_list;
 
 int count_arg(char  **av)   //i is a lenght of arguments --> if the arguments is like that <1 0 5 8 5> it's normale but if it's like <1 2 8 9 "2 6 7" 4> it must to split it to a normal arg
 {
