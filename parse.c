@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/08 18:34:22 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/11 11:20:16 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_atoi(char *str)
 		}
 		cnt++;
 	}
-	if (cnt > 1)
+	if (cnt > 1) //modifie cnt printf("error") si le cnt est plus que 1 pour le (+) et le (-)
 		return (0);
 	som = somft(str, i);
 	return (som * sign);
@@ -62,9 +62,9 @@ int count_arg(char  **av)   //i is a lenght of arguments --> if the arguments is
 
 t_list  *place(char  **av)
 {
-    t_list  *a;
     t_list  *head = NULL;
     int i = count_arg(av);
+    t_list  *a[i];
     int j = 1;
     head = a;
     while(j <= i)
@@ -76,7 +76,7 @@ t_list  *place(char  **av)
         i--;
     }
     head ->next = NULL;
-    a  = head;
+    a[i] = head;
     return (a);
 }
 
