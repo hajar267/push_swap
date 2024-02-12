@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/11 11:20:16 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/12 21:23:35 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ int	ft_atoi(char *str)
 		i++;
 	while (str[i] && (str[i] == '+' || str[i] == '-'))
 	{
-		if (str[i++] == '-')
+		if (str[i] == '-' ||  str[i] == '+')
 		{
 			sign = sign * -1;
 		}
 		cnt++;
+		i++;
 	}
 	if (cnt > 1) //modifie cnt printf("error") si le cnt est plus que 1 pour le (+) et le (-)
 		return (0);
