@@ -6,58 +6,147 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 01:42:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/12 21:18:24 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/13 15:01:39 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int ft_check_dupl(char  **av)
+size_t	ft_strlen(const char *str)
 {
-    int i = 1;
-    int j = 2;
-   while(av[j])
-   {
-    if (av[i] == av[j])
-        return(0);
-    else
-        j++;
-        j++;
-   }
-   return(1);
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+char	*ft_strdup(const char *s)
+{
+	size_t		len ;
+	char		*str;
+	int			i;
+
+	i = 0;
+	len = ft_strlen((char *)s);
+	str = malloc(len +1);
+	if (!str)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-int check_char(char **av)
+int	ft_compt_word(char const *st, char t)
 {
-    int i = 1;
-    int j = 0;
+	int	i;
+	int	cnt;
 
-    while(av[i])
-    {
-        while(av[i][j])
-        {
-            if ((av[i][j] < 48 && av[i][j] > 57) && (av[i][j] != '+' && av[i][j] != '-'))
-                return (0);
-            else
-                j++;
-        }
-        i++;
-    }
-    return (1);
+	i = 0;
+	cnt = 0;
+	while (st[i])
+	{
+		while (st[i] && st[i] == t)
+			i++;
+		while (st[i] && st[i] != t)
+			i++;
+		cnt++;
+	}
+	if (!st[0])
+		return (0);
+	if (st[ft_strlen((char *)st) - 1] == t)
+		cnt = cnt -1;
+	return (cnt);
 }
 
-char    **ft_args(char  **av)
+int	ft_compt_chr(char const *str, char r)
 {
-    int i;
-    char    *str;
-    char    **argv;
+	int	j;
 
-    i = 1;
-    while(av[i])
-    {
-        str = ft_strjoin(av[i], " ");
-        i++;
-    }
-    argv = ft_split(str, ' ');
-    return (argv);
+	j = 0;
+	while (*str && *str == r)
+		str++;
+	while (*str && *str != r)
+	{
+		str++;
+		j++;
+	}
+	return (j);
+}
+
+int	re_place(char **array, const char *tr, char c)
+{
+	int	i;
+	int	j;
+	int	x;
+
+	i = 0;
+	x = 0;
+	while (i < ft_compt_word(tr, c))
+	{
+		array[i] = malloc(ft_compt_chr(tr + x, c) + 1);
+		if (!array[i])
+		{
+			while (--i >= 0)
+				free (array[i]);
+			free(array);
+			return (1);
+		}
+		j = 0;
+		while (tr[x] == c)
+			x++;
+		while (tr[x] && tr[x] != c)
+			array[i][j++] = tr[x++];
+		array[i++][j] = '\0';
+	}
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		cnt;
+	char	**array;
+
+	if (s == NULL )
+		return (NULL);
+	cnt = ft_compt_word(s, c);
+	array = malloc (sizeof(char *) * (cnt +1));
+	if (!array)
+		return (NULL);
+	if (re_place(array, s, c))
+		return (NULL);
+	array[cnt] = NULL;
+	return (array);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	j = 0;
+	i = 0;
+	if (s1 == NULL)
+		return (ft_strdup(s2));
+    if (s2 == NULL)
+        return (ft_strdup(s1));
+	str = (char *)malloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		str[i++] = s2[j++];
+	}
+	str[i] = '\0';
+	return (str);
 }

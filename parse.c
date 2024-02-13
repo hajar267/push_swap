@@ -6,22 +6,27 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/12 21:23:35 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/13 14:55:20 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-static	int	somft(char	*str, int i)
+int	somft(char	*str, int i)
 {
 	int	som;
 
 	som = 0;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9' ))
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
 		som = som * 10;
 		som = (som + str[i]) - 48;
 		i++;
+	}
+	if (str[i] && !(str[i] >= '0' && str[i] <= '9'))
+	{
+		printf("error !int");
+		exit(0);
 	}
 	return (som);
 }
@@ -30,62 +35,112 @@ int	ft_atoi(char *str)
 {
 	int	som;
 	int	sign;
-	int	cnt;
 	int	i ;
 
 	i = 0;
-	cnt = 0;
 	sign = 1;
 	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-	while (str[i] && (str[i] == '+' || str[i] == '-'))
+	if (str[i] == '-')
 	{
-		if (str[i] == '-' ||  str[i] == '+')
-		{
-			sign = sign * -1;
-		}
-		cnt++;
+		sign = sign * -1;
 		i++;
 	}
-	if (cnt > 1) //modifie cnt printf("error") si le cnt est plus que 1 pour le (+) et le (-)
-		return (0);
+	else if (str[i] == '+')
+		i++;
 	som = somft(str, i);
 	return (som * sign);
 }
 
-int count_arg(char  **av)   //i is a lenght of arguments --> if the arguments is like that <1 0 5 8 5> it's normale but if it's like <1 2 8 9 "2 6 7" 4> it must to split it to a normal arg
+t_list	*ft_lstlast(t_list *lst)
 {
-    int i = 1;
-    while (av[i])
-        i++;
-    return (i);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
-t_list  *place(char  **av)
+t_list	*ft_lstnew(int	content)
 {
-    t_list  *head = NULL;
-    int i = count_arg(av);
-    t_list  *a[i];
-    int j = 1;
-    head = a;
-    while(j <= i)
+	t_list	*head;
+
+	head = malloc(sizeof(t_list));
+	if (!head)
+		return (NULL);
+	head -> data = content;
+	head -> next = NULL ;
+	return (head);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*nod;
+
+	if (!(*lst))
+	{
+		(*lst) = new;
+		return ;
+	}
+	nod = ft_lstlast((*lst));
+	nod->next = new;
+}
+
+
+t_list    *ft_args(char  **av)
+{
+    int i;
+    char    *str = NULL;
+    char    *tmp;
+    char    **argv;
+    t_list  *a = NULL;
+
+    i = 1;
+    while(av[i])
     {
-        head = malloc(sizeof(t_list));
-        head -> data = ft_atoi(av[j]);
-        head = head ->next;
-        j++;
-        i--;
+        tmp = ft_strjoin(av[i], " ");
+        str = ft_strjoin(str, tmp);
+        free (tmp);
+        i++;
     }
-    head ->next = NULL;
-    a[i] = head;
+    argv = ft_split(str, ' ');
+    i = 0;
+    while(argv[i])
+        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
     return (a);
+}
+
+int	ft_check_dup(char	**argv)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 1;
+	while(argv[i])
+	{
+		while(argv[j])
+		{
+			if (argv[i] == argv[j])
+				return (0);
+			else
+				j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int main(int    ac, char  **av)
 {
     t_list  *a;
-    if (ac < 2)
+    if (ac == 1)
         return (0);
     else
-        a = place(av);
+        a = ft_args(av);
+	while(a)
+	{
+		printf("%d ", a ->data);
+		a = a ->next;
+	}
 }
