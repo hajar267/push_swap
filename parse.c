@@ -6,15 +6,36 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/13 14:55:20 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/14 12:43:47 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
+int	ft_check_empty(char	**str)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while(str[i])
+	{
+		j = 0;
+		while(str[i][j])
+		{
+			if (str[i][j] == ' ' && str[i][j+1] != ' ')
+				return (0);
+			else
+				j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	somft(char	*str, int i)
 {
-	int	som;
+	long	som;
 
 	som = 0;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
@@ -22,6 +43,11 @@ int	somft(char	*str, int i)
 		som = som * 10;
 		som = (som + str[i]) - 48;
 		i++;
+	}
+	if (som < INT_MIN || som > INT_MAX)
+	{
+		printf("error max || min int !!!");
+		exit(0);
 	}
 	if (str[i] && !(str[i] >= '0' && str[i] <= '9'))
 	{
@@ -33,12 +59,17 @@ int	somft(char	*str, int i)
 
 int	ft_atoi(char *str)
 {
-	int	som;
+	long	som;
 	int	sign;
 	int	i ;
 
 	i = 0;
 	sign = 1;
+	if (!str)
+	{
+		printf("empty string !!!");
+		exit(0);
+	}
 	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
 	if (str[i] == '-')
@@ -86,6 +117,25 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	nod->next = new;
 }
 
+int	ft_check_dup(t_list	*a)
+{
+	t_list	*head;
+
+	head = NULL;
+	while(a)
+	{
+		head = a->next;
+		while(head)
+		{
+			if (a->data == head->data)
+				return (0);
+			else
+				head = head->next;
+		}
+		a = a ->next;
+	}
+	return (1);
+}
 
 t_list    *ft_args(char  **av)
 {
@@ -98,6 +148,11 @@ t_list    *ft_args(char  **av)
     i = 1;
     while(av[i])
     {
+		if (ft_check_empty(av) == 0)
+		{
+			printf("error espace !!!");
+			exit(0);
+		}
         tmp = ft_strjoin(av[i], " ");
         str = ft_strjoin(str, tmp);
         free (tmp);
@@ -107,29 +162,14 @@ t_list    *ft_args(char  **av)
     i = 0;
     while(argv[i])
         ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
+	if(ft_check_dup(a) == 0)
+	{
+		printf("error duplicated");
+		exit(0);
+	}
     return (a);
 }
 
-int	ft_check_dup(char	**argv)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 1;
-	while(argv[i])
-	{
-		while(argv[j])
-		{
-			if (argv[i] == argv[j])
-				return (0);
-			else
-				j++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 int main(int    ac, char  **av)
 {
@@ -144,3 +184,8 @@ int main(int    ac, char  **av)
 		a = a ->next;
 	}
 }
+
+// int main()
+// {
+// 	printf("%s","");
+// }
