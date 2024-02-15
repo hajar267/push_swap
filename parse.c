@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/15 12:49:16 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/15 21:53:23 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_check_empty(char	**str)
 	return (1);
 }
 
-int	somft(char	*str, int i)
+int	somft(char	*str, int i, int signe)
 {
 	long	som;
 
@@ -65,8 +65,10 @@ int	somft(char	*str, int i)
 		som = (som + str[i]) - 48;
 		i++;
 	}
+	som = som * signe;
 	if (som < INT_MIN || som > INT_MAX)
 	{
+		printf("%ld", som);
 		printf("error max || min int !!!");
 		exit(0);
 	}
@@ -81,27 +83,19 @@ int	somft(char	*str, int i)
 int	ft_atoi(char *str)
 {
 	long	som;
-	int	sign;
-	int	i ;
+	int		signe;
+	int		i;
 
 	i = 0;
-	sign = 1;
-	if (!str)
-	{
-		printf("empty string !!!");
-		exit(0);
-	}
+	signe = 1;
 	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-	if (str[i] == '-')
-	{
-		sign = sign * -1;
-		i++;
-	}
+	if (str[i++] == '-')
+		signe = signe * -1;
 	else if (str[i] == '+')
 		i++;
-	som = somft(str, i);
-	return (som * sign);
+	som = somft(str, i, signe);
+	return (som);
 }
 
 t_list	*ft_lstlast(t_list *lst)
@@ -188,12 +182,13 @@ int	check_empty(char **av)
 
 t_list    *ft_args(char  **av)
 {
-    int i;
+    int		i;
     char    *str = NULL;
     char    *tmp;
     char    **argv;
-    t_list  *a = NULL;
+    t_list  *a;
 
+	a = NULL;
 	if (check_empty(av) == 1)
 		exit(write(2, "Error!\n", 8));
     i = 1;
@@ -220,21 +215,24 @@ t_list    *ft_args(char  **av)
 	}
     return (a);
 }
-
+#include <limits.h>
 
 int main(int    ac, char  **av)
 {
     t_list  *a;
 	t_list	*b;
+
     if (ac == 1)
         return (0);
     else
         a = ft_args(av);
-	ft_push(&a, &b);
-	ft_swap(&a);
+	// ft_push(&a, &b);
+	// ft_swap(&a);
+	// ft_rotate(&a);
+	// ft_re_rotate(&a);
 	while(a)
 	{
-		printf("%d ", a ->data);
+		printf("%d \n", a ->data);
 		a = a ->next;
 	}
 }
