@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/14 12:40:41 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:48:43 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<limits.h>
+#include <unistd.h>
 #ifndef NULL
 #include <sys/_types.h>
 #define NULL   __DARWIN_NULL
@@ -38,6 +39,11 @@ t_list  **place(char  **av);
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int	ft_check_dup(t_list *a);
-int	ft_check_empty(char	**str);
+int	ft_check_dup_int(t_list	*a);
+void    ft_swap(t_list  **a);
+void    ft_push(t_list  **a, t_list  **b);
+void    ft_rotate(t_list    **a);
+t_list	*ft_lstlast(t_list *lst);
+void ft_lstlast1(t_list *lst);
 
 #endif

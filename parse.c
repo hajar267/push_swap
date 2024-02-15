@@ -6,11 +6,32 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/14 12:43:47 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:49:16 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
+
+int	ft_check_sort(t_list	*a)
+{
+	t_list	*head;
+
+	head = NULL;
+	while (a)
+	{
+	head = a ->next;
+		while (head)
+		{
+			if (a ->data < head ->data)
+				head = head ->next;
+			else
+				return(0);
+		}
+		a = a ->next;
+	}
+	return(1);
+}
 
 int	ft_check_empty(char	**str)
 {
@@ -137,6 +158,34 @@ int	ft_check_dup(t_list	*a)
 	return (1);
 }
 
+
+int	is_empty(char *str)
+{
+	int	i = 0;
+
+	while (str[i])
+	{
+		if (!(str[i] == ' ' || (str[i] >= 9 && str[i] <=13)))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_empty(char **av)
+{
+	int i = 0;
+	while(av[i])
+	{
+		int j = 0;
+		if (is_empty(av[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+
 t_list    *ft_args(char  **av)
 {
     int i;
@@ -145,14 +194,11 @@ t_list    *ft_args(char  **av)
     char    **argv;
     t_list  *a = NULL;
 
+	if (check_empty(av) == 1)
+		exit(write(2, "Error!\n", 8));
     i = 1;
     while(av[i])
     {
-		if (ft_check_empty(av) == 0)
-		{
-			printf("error espace !!!");
-			exit(0);
-		}
         tmp = ft_strjoin(av[i], " ");
         str = ft_strjoin(str, tmp);
         free (tmp);
@@ -167,6 +213,11 @@ t_list    *ft_args(char  **av)
 		printf("error duplicated");
 		exit(0);
 	}
+	if (ft_check_sort(a) == 1)
+	{
+		printf("error sort !!!");
+		exit(0);
+	}
     return (a);
 }
 
@@ -174,18 +225,16 @@ t_list    *ft_args(char  **av)
 int main(int    ac, char  **av)
 {
     t_list  *a;
+	t_list	*b;
     if (ac == 1)
         return (0);
     else
         a = ft_args(av);
+	ft_push(&a, &b);
+	ft_swap(&a);
 	while(a)
 	{
 		printf("%d ", a ->data);
 		a = a ->next;
 	}
 }
-
-// int main()
-// {
-// 	printf("%s","");
-// }
