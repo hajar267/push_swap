@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/16 15:50:17 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/16 18:45:57 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,10 +230,13 @@ int main(int    ac, char  **av)
         return (0);
     else
         a = ft_args(av);
-	ft_push(&a, &b);
-	ft_swap(&a);
-	ft_rotate(&a);
-	ft_re_rotate(&a);
+	if (ac == 3)
+		ft_swap(&a);
+	if(ac == 4)
+		ft_3args(&a);
+	// ft_re_rotate(&a);
+	// ft_rotate(&a);
+	// ft_swap(&a);
 	while(a)
 	{
 		printf("%d\n", a ->data);
