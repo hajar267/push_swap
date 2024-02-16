@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/15 21:53:23 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/16 15:50:17 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,47 +54,50 @@ int	ft_check_empty(char	**str)
 	return (1);
 }
 
-int	somft(char	*str, int i, int signe)
+int	somft(char	*str, int i, int sign)
 {
 	long	som;
+	long x;
 
 	som = 0;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	while (str[i] && (str[i] >= '0' && str[i] <= '9' ))
 	{
 		som = som * 10;
 		som = (som + str[i]) - 48;
 		i++;
 	}
-	som = som * signe;
-	if (som < INT_MIN || som > INT_MAX)
-	{
-		printf("%ld", som);
-		printf("error max || min int !!!");
-		exit(0);
-	}
-	if (str[i] && !(str[i] >= '0' && str[i] <= '9'))
+	if(str[i])
 	{
 		printf("error !int");
 		exit(0);
 	}
-	return (som);
+	x = som * sign;
+	if (x > INT_MAX || x < INT_MIN)
+	{
+		printf("error !!!{int max || int min} ");
+		exit(0);
+	}
+	return (x);
 }
 
 int	ft_atoi(char *str)
 {
-	long	som;
-	int		signe;
-	int		i;
+	int	som;
+	long	sign;
+	int	i ;
 
 	i = 0;
-	signe = 1;
+	sign = 1;
 	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-	if (str[i++] == '-')
-		signe = signe * -1;
-	else if (str[i] == '+')
-		i++;
-	som = somft(str, i, signe);
+		if (str[i] != '\0' && str[i] == '-')
+		{
+			sign = sign * -1;
+			i++;
+		}
+		else if (str[i] != '\0' && str[i] == '+')
+			i++;
+	som = somft(str, i, sign);
 	return (som);
 }
 
@@ -202,20 +205,21 @@ t_list    *ft_args(char  **av)
     argv = ft_split(str, ' ');
     i = 0;
     while(argv[i])
-        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
-	if(ft_check_dup(a) == 0)
 	{
-		printf("error duplicated");
-		exit(0);
+        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
 	}
 	if (ft_check_sort(a) == 1)
 	{
 		printf("error sort !!!");
 		exit(0);
 	}
+	if(ft_check_dup(a) == 0)
+	{
+		printf("error dup");
+		exit(0);
+	}
     return (a);
 }
-#include <limits.h>
 
 int main(int    ac, char  **av)
 {
@@ -226,13 +230,13 @@ int main(int    ac, char  **av)
         return (0);
     else
         a = ft_args(av);
-	// ft_push(&a, &b);
-	// ft_swap(&a);
-	// ft_rotate(&a);
-	// ft_re_rotate(&a);
+	ft_push(&a, &b);
+	ft_swap(&a);
+	ft_rotate(&a);
+	ft_re_rotate(&a);
 	while(a)
 	{
-		printf("%d \n", a ->data);
+		printf("%d\n", a ->data);
 		a = a ->next;
 	}
 }
