@@ -6,12 +6,27 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/16 18:45:57 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/17 20:28:08 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
+
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	while (lst != NULL)
+	{
+		lst = lst -> next;
+		i++;
+	}
+	return (i);
+}
 
 int	ft_check_sort(t_list	*a)
 {
@@ -230,13 +245,13 @@ int main(int    ac, char  **av)
         return (0);
     else
         a = ft_args(av);
-	if (ac == 3)
-		ft_swap(&a);
-	if(ac == 4)
-		ft_3args(&a);
-	// ft_re_rotate(&a);
-	// ft_rotate(&a);
-	// ft_swap(&a);
+	// if (ft_lstsize(a) == 2)
+	// 	ft_swap(&a);
+	// if(ft_lstsize(a) == 3)
+	// 	ft_3args(&a);
+	// // ft_re_rotate(&a);
+	// // ft_rotate(&a);
+	// // ft_swap(&a);
 	while(a)
 	{
 		printf("%d\n", a ->data);
