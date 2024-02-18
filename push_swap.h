@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/17 18:05:07 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/18 21:47:51 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ t_list	*ft_lstlast(t_list *lst);
 void    ft_re_rotate(t_list **a);
 void    ft_3args(t_list **a);
 int	ft_lstsize(t_list *lst);
+int ft_get_position_small(t_list    *a);
+void    ft_5args(t_list **a, t_list **b);
 
 #endif

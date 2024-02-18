@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/17 20:28:08 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/18 21:48:13 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,10 +245,12 @@ int main(int    ac, char  **av)
         return (0);
     else
         a = ft_args(av);
-	// if (ft_lstsize(a) == 2)
-	// 	ft_swap(&a);
-	// if(ft_lstsize(a) == 3)
-	// 	ft_3args(&a);
+	if (ft_lstsize(a) == 2)
+		ft_swap(&a);
+	if(ft_lstsize(a) == 3)
+		ft_3args(&a);
+	if (ft_lstsize(a) == 4 || ft_lstsize(a) == 5)
+		ft_5args(&a,&b);
 	// // ft_re_rotate(&a);
 	// // ft_rotate(&a);
 	// // ft_swap(&a);
