@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/18 21:48:13 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/19 11:05:01 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,6 +251,12 @@ int main(int    ac, char  **av)
 		ft_3args(&a);
 	if (ft_lstsize(a) == 4 || ft_lstsize(a) == 5)
 		ft_5args(&a,&b);
+
+	// while(a)
+	// {
+	// 	printf("%d\n", a->data);
+	// 	a = a ->next;
+	// }
 	// // ft_re_rotate(&a);
 	// // ft_rotate(&a);
 	// // ft_swap(&a);

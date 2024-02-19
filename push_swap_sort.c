@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/18 21:45:44 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/19 12:43:19 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void    ft_5args(t_list **a, t_list **b)
     t_list  *tmp;
     tmp = *a;
     static  int i =0;
+    
     if (ft_lstsize(*a) == 5)
     {
         if (ft_get_position_small(*a) == 0)
@@ -127,4 +128,42 @@ void    ft_5args(t_list **a, t_list **b)
         ft_3args(a);
     ft_push(b, a);
     ft_push(b, a);
+    // while(*b)
+	// {
+	// 	printf("%d\n", (*b) ->data);
+	// 	(*b) = (*b) ->next;
+	// }
+    // exit(0);
+}
+
+
+void ft_get_index(t_list    *a)
+{
+    t_list  *tmp;
+    int i;
+
+    tmp = a;
+    i = 0;
+        while (tmp)
+        {
+            tmp->index = i;
+            tmp = tmp->next;
+            i++;
+        }    
+}
+
+void    ft_get_position(t_list  *a)
+{
+    t_list  *head;
+    t_list  *tmp;
+    int j;
+    int i;
+
+    i = ft_lstsize(&a);
+    head = a;
+    while (i > 0)
+    {
+
+        i--;
+    }
 }

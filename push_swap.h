@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/18 21:47:51 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/19 10:34:45 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_list
 {
     int             data;
     struct s_list   *next;
+    int             position;
+    int             index;
 }t_list;
 
 int	ft_compt_word(char const *st, char t);

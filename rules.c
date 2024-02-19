@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:24:18 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/15 21:30:02 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/19 11:03:04 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void    ft_push(t_list  **a, t_list  **b)
     t_list  *head;
     t_list  *root;
     
+    if (!ft_lstsize(*a))
+        return ;
     root = *b;
     head = *a;
     *a = head ->next;
