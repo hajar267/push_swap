@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/20 10:34:25 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/20 20:46:07 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 {
     int             data;
     struct s_list   *next;
+    struct s_list   *prev;
     int             position;
     int             index;
 }t_list;
@@ -53,5 +54,9 @@ int ft_get_position_small(t_list    *a);
 void    ft_5args(t_list **a, t_list **b);
 void    ft_get_position(t_list  *a);
 void ft_get_index(t_list    *a);
+void    if_4(t_list **a, t_list **b);
+void    if_5(t_list **a, t_list **b);
+void    ft_algo_args(t_list *a, t_list  *b);
+
 
 #endif
