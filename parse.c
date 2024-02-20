@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/19 11:05:01 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:05:29 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,10 +245,10 @@ int main(int    ac, char  **av)
         return (0);
     else
         a = ft_args(av);
-	if (ft_lstsize(a) == 2)
-		ft_swap(&a);
-	if(ft_lstsize(a) == 3)
-		ft_3args(&a);
+	// if (ft_lstsize(a) == 2)
+	// 	ft_swap(&a);
+	// if(ft_lstsize(a) == 3)
+	// 	ft_3args(&a);
 	if (ft_lstsize(a) == 4 || ft_lstsize(a) == 5)
 		ft_5args(&a,&b);
 
@@ -260,6 +260,8 @@ int main(int    ac, char  **av)
 	// // ft_re_rotate(&a);
 	// // ft_rotate(&a);
 	// // ft_swap(&a);
+	// ft_get_position(a);
+	// ft_get_index(a);
 	while(a)
 	{
 		printf("%d\n", a ->data);

@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/19 10:34:45 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/20 10:34:25 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void    ft_3args(t_list **a);
 int	ft_lstsize(t_list *lst);
 int ft_get_position_small(t_list    *a);
 void    ft_5args(t_list **a, t_list **b);
+void    ft_get_position(t_list  *a);
+void ft_get_index(t_list    *a);
 
 #endif
