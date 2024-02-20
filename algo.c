@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:36:11 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/20 20:55:44 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/20 21:13:30 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    ft_algo_args(t_list *a, t_list  *b)
     j = ft_lstsize(a);
     while(j > y)
     {
-        i = ft_lstsize(a) / 4;
+        i = j / 4;
         while(i > 0 && j > y)  // check for each int it is in its interval  or no if it is so push it other whise skeep it  ///// function to impl
         {
             while (a)   // a->position include its interval or non
@@ -37,7 +37,7 @@ void    ft_algo_args(t_list *a, t_list  *b)
             /*
             while(a)
             {
-                if (a->position >= 0 && a->position <= 1)
+                if (a->position >= y && a->position < i+y)
                     return (a->position)
                 else
                     a=a->next;
@@ -46,7 +46,7 @@ void    ft_algo_args(t_list *a, t_list  *b)
             head = ft_lstlast(head);
             while(head != a)
             {
-                 if (head->position >= 0 && head->position <= 1)
+                 if (head->position >= y && head->position < i+y)
                     return (head->position)
                 else
                     head=head->prev;
@@ -58,7 +58,7 @@ void    ft_algo_args(t_list *a, t_list  *b)
             i--;
             y++;
         }
-        x = ft_lstsize(a) / 4;
+        x = ft_lstsize(a) / 4; // not intrss
     }
     
 } 
