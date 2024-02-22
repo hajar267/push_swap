@@ -5,61 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 16:36:11 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/20 21:13:30 by hfiqar           ###   ########.fr       */
+/*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
+/*   Updated: 2024/02/22 15:42:36 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-// if args > 5 && args < 500
+int find_from_top_bottom(t_list  *a, int i, int j)
+{
+    t_list  *head;
+    t_list  *queue;
 
-void    ft_algo_args(t_list *a, t_list  *b)
+    head = a;
+    queue = ft_lstlast(a);
+    while(head)
+    {
+        if (head ->position >= i && head ->position < j)
+            return (head->index);
+        else if (queue -> position >= i && queue ->position < j)
+            return (queue->index);
+        else
+        {
+            head = head->next;
+            queue = queue->prev;
+        }
+    }
+}
+
+void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
 {
     int i;
-    int j;
-    int y;
-    int x;
+    t_list  *head;
 
-    y = 0;
-    x = 0;
-    j = ft_lstsize(a);
-    while(j > y)
+    head = *a;
+    i = find_from_top_bottom(*a, x, y);
+    if (i  >= 0 && i <= size/2)
     {
-        i = j / 4;
-        while(i > 0 && j > y)  // check for each int it is in its interval  or no if it is so push it other whise skeep it  ///// function to impl
-        {
-            while (a)   // a->position include its interval or non
-            {
-                //function return the index of the first int include interval 
-                a = a->next;
-            }
-            /*
-            while(a)
-            {
-                if (a->position >= y && a->position < i+y)
-                    return (a->position)
-                else
-                    a=a->next;
-            }
-            head = a;
-            head = ft_lstlast(head);
-            while(head != a)
-            {
-                 if (head->position >= y && head->position < i+y)
-                    return (head->position)
-                else
-                    head=head->prev;
-            }
-            // comparison entre 1ere position and 2ere (la facilite de saute a b)
-            check this position if it is in 0 -- size/2 or size/2 --size
-            */
-            
-            i--;
-            y++;
-        }
-        x = ft_lstsize(a) / 4; // not intrss
+        while(head -> index != i)
+            ft_rotate(a);
+        ft_push(a,b);
     }
-    
-} 
-// if(position(i)) include the first ft_lstsize(a) / 2 or the seconde //////// function to impl
+    else if (i > size/2 && i < size)
+    {
+        while(head -> index != i)
+            ft_re_rotate(a);
+        ft_push(a,b);
+    }
+}
