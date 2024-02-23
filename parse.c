@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/23 11:10:04 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/23 19:13:26 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,6 +241,7 @@ int main(int    ac, char  **av)
     t_list  *a;
 	t_list	*b;
 	int i;
+	int size;
 
     if (ac == 1)
         return (0);
@@ -261,10 +262,14 @@ int main(int    ac, char  **av)
 	// // ft_re_rotate(&a);
 	// // ft_rotate(&a);
 	// // ft_swap(&a);
+	size = ft_lstsize(a);
 	ft_get_index(a);
 	ft_get_position(a);
-	i = find_from_top_bottom(a, 1, 2);
-	printf("%d", i);
+	i = find_from_top_bottom(a, 0, 1);
+	printf("---(%d)---\n", i);
+	check_position_moves(&b, &a, size, 0, 1);
+	printf("%d\n", a->data);
+	printf("%d\n", b->data);
 	// while(a)
 	// {
 	// 	printf("%d\n", a ->data);
