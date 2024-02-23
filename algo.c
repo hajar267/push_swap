@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/22 15:42:36 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/23 11:09:07 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int find_from_top_bottom(t_list  *a, int i, int j)
             queue = queue->prev;
         }
     }
+    return (0);
 }
 
 void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
@@ -53,3 +54,6 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
         ft_push(a,b);
     }
 }
+// ft_get_index(a) after each push from a to b
+
+

@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/20 20:46:07 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/23 11:01:45 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void ft_get_index(t_list    *a);
 void    if_4(t_list **a, t_list **b);
 void    if_5(t_list **a, t_list **b);
 void    ft_algo_args(t_list *a, t_list  *b);
-
+int find_from_top_bottom(t_list  *a, int i, int j);
+void    check_position_moves(t_list **b, t_list **a, int size, int x, int y);
 
 #endif
