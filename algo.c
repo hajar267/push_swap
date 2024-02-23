@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/23 19:16:42 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/23 21:30:44 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int find_from_top_bottom(t_list  *a, int i, int j)
         else
         {
             head = head->next;
-            queue = ft_lstlast(a ->next);
+            queue = ft_lstlast(head);
         }
     }
     return (0);
@@ -54,20 +54,23 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
         head = *a;
     }
     ft_push(a, b);
+    if ((*b)->position < x + y / 2 && ft_lstsize(*b) > 1)
+        ft_rotate(b);
+    ft_get_index(*a);
 }
-// ft_get_index(a) after each push from a to b
 
+void    algo(t_list *a, t_list  *b, int dev)
+{
+    int size;
+    int chank;
+    int y;
 
-
-    // if (i  >= 0 && i <= size/2)
-    // {
-    //     while(head -> index != i)
-    //         ft_rotate(a);
-    //     ft_push(a,b);
-    // }
-    // else if (i > size/2 && i < size)
-    // {
-    //     while(head -> index != i)
-    //         ft_re_rotate(a);
-    //     ft_push(a,b);
-    // }
+    size = ft_lstsize(a);
+    chank = size / dev;
+    y = 0;
+    while(y < size)
+    {
+        check_position_moves(&b, &a, size, y, chank + y);
+        y++;
+    }
+}
