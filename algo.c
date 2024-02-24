@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/23 21:30:44 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/24 11:15:10 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,21 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
     t_list  *head;
 
     head = *a;
-    i = find_from_top_bottom(*a, x, y);  
+
+    i = find_from_top_bottom(*a, x, y); 
         printf("---%d---\n", i);  // it return 0 instead 3
+        //printf("---%d---\n", x);
+        (void)x;  // it return 0 instead 3
+        // printf("---%d---\n", y);  // it return 0 instead 3
+    // // //      while(*a)
+	// {
+	// 	printf("%d\n", (*a) ->data);
+	// 	*a = (*a) ->next;
+	// }
     while(head ->index != i)
     {
-        printf("---%d---\n", head->index);
-        if (i <= size/2)
+        // printf("---%d---\n", head->index);
+        if (i <= size /2)
             ft_rotate(a);
         else
             ft_re_rotate(a);

@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/23 19:13:26 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/24 11:14:45 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,10 +266,10 @@ int main(int    ac, char  **av)
 	ft_get_index(a);
 	ft_get_position(a);
 	i = find_from_top_bottom(a, 0, 1);
-	printf("---(%d)---\n", i);
+	// printf("---(%d)---\n", i);
 	check_position_moves(&b, &a, size, 0, 1);
-	printf("%d\n", a->data);
-	printf("%d\n", b->data);
+	// printf("%d\n", a->data);
+	// printf("%d\n", b->data);
 	// while(a)
 	// {
 	// 	printf("%d\n", a ->data);
