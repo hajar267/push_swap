@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/24 11:15:10 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/24 11:47:30 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ int find_from_top_bottom(t_list  *a, int i, int j)
     head = a;
     while(head && queue && queue != a)
     {
-        queue = ft_lstlast(a);
+    queue = ft_lstlast(a);
         if (head ->position >= i && head ->position < j)
+        {
+           
             return (head->index);
+        }
         else if (queue -> position >= i && queue ->position < j)
         {
             return (queue->index);
@@ -43,16 +46,20 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
 
     head = *a;
 
-    i = find_from_top_bottom(*a, x, y); 
+    i = 10;
+    i = find_from_top_bottom(*a, 0, 1); 
         printf("---%d---\n", i);  // it return 0 instead 3
-        //printf("---%d---\n", x);
-        (void)x;  // it return 0 instead 3
+        // printf("---%d---\n", i);  // it return 0 instead 3
+        // printf("---%d---\n", i);  // it return 0 instead 3
+        // fflush(stdout);
+        // printf("---%d---\n", x);  // it return 0 instead 3
         // printf("---%d---\n", y);  // it return 0 instead 3
-    // // //      while(*a)
+    //      while(*a)
 	// {
 	// 	printf("%d\n", (*a) ->data);
 	// 	*a = (*a) ->next;
 	// }
+    // exit(0);
     while(head ->index != i)
     {
         // printf("---%d---\n", head->index);
