@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/24 11:47:30 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/24 12:10:24 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int find_from_top_bottom(t_list  *a, int i, int j)
     t_list  *queue;
 
     head = a;
+    queue = ft_lstlast(a);
     while(head && queue && queue != a)
     {
-    queue = ft_lstlast(a);
         if (head ->position >= i && head ->position < j)
         {
            
@@ -48,18 +48,6 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
 
     i = 10;
     i = find_from_top_bottom(*a, 0, 1); 
-        printf("---%d---\n", i);  // it return 0 instead 3
-        // printf("---%d---\n", i);  // it return 0 instead 3
-        // printf("---%d---\n", i);  // it return 0 instead 3
-        // fflush(stdout);
-        // printf("---%d---\n", x);  // it return 0 instead 3
-        // printf("---%d---\n", y);  // it return 0 instead 3
-    //      while(*a)
-	// {
-	// 	printf("%d\n", (*a) ->data);
-	// 	*a = (*a) ->next;
-	// }
-    // exit(0);
     while(head ->index != i)
     {
         // printf("---%d---\n", head->index);
@@ -72,7 +60,18 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
     ft_push(a, b);
     if ((*b)->position < x + y / 2 && ft_lstsize(*b) > 1)
         ft_rotate(b);
+    // while(*a)
+	// {
+	// 	printf("%d\n", (*a) ->index);
+	// 	*a = (*a) ->next;
+	// }
     ft_get_index(*a);
+    // printf("------\n");
+    // while(*a)
+	// {
+	// 	printf("%d\n", (*a) ->index);
+	// 	*a = (*a) ->next;
+	// }
 }
 
 void    algo(t_list *a, t_list  *b, int dev)
