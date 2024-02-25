@@ -59,5 +59,6 @@ void    if_5(t_list **a, t_list **b);
 void    ft_algo_args(t_list *a, t_list  *b);
 int find_from_top_bottom(t_list  *a, int i, int j);
 void    check_position_moves(t_list **b, t_list **a, int size, int x, int y);
+void    algo(t_list *a, t_list  *b, int dev);
 
 #endif

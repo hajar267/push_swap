@@ -239,7 +239,7 @@ t_list    *ft_args(char  **av)
 int main(int    ac, char  **av)
 {
     t_list  *a;
-	t_list	*b;
+	t_list	*b = NULL;
 	int i;
 	int size;
 
@@ -265,22 +265,14 @@ int main(int    ac, char  **av)
 	size = ft_lstsize(a);
 	ft_get_index(a);
 	ft_get_position(a);
-	i = find_from_top_bottom(a, 0, 1);
-	check_position_moves(&b, &a, size, 0, 1);
-	i = find_from_top_bottom(a, 1, 2);
-	check_position_moves(&b, &a, size, 1, 2);
+	algo(a, b, 3);
+	while(b)
+	{
+		printf("%d\n", b->data);
+		b = b->next;
+	}
 	// printf("%d\n", a->data);
 	// printf("%d\n", b->data);
 	// printf("-------\n");
-	while(a)
-	{
-		printf("%d\n", a ->index);
-		a = a ->next;
-	}
-	printf("--------\n");
-	while(b)
-	{
-		printf("%d\n", b ->data);
-		b = b ->next;
-	}
+
 }

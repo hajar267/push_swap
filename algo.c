@@ -66,6 +66,7 @@ void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
 	// 	*a = (*a) ->next;
 	// }
     ft_get_index(*a);
+    ft_get_position(*a);
     // printf("------\n");
     // while(*a)
 	// {
@@ -79,13 +80,20 @@ void    algo(t_list *a, t_list  *b, int dev)
     int size;
     int chank;
     int y;
+    int tmp;
+    int tmp1;
 
-    size = ft_lstsize(a);
-    chank = size / dev;
+    tmp = ft_lstsize(a);
+    chank = tmp / dev;
     y = 0;
     while(y < size)
     {
-        check_position_moves(&b, &a, size, y, chank + y);
-        y++;
+        tmp1 = chank;
+        while(tmp1 > 0 && ft_lstsize(a) > 0)
+        {
+            size = ft_lstsize(a);
+            check_position_moves(&b, &a, size, y, chank + y);
+            y++;
+        }
     }
 }
