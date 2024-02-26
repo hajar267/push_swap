@@ -6,13 +6,13 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/24 12:10:24 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/26 19:21:56 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int find_from_top_bottom(t_list  *a, int i, int j)
+int find_from_top_bottom(t_list  *a, int y, int chank)
 {
     t_list  *head;
     t_list  *queue;
@@ -21,79 +21,64 @@ int find_from_top_bottom(t_list  *a, int i, int j)
     queue = ft_lstlast(a);
     while(head && queue && queue != a)
     {
-        if (head ->position >= i && head ->position < j)
-        {
-           
+        if (head ->position >= y && head ->position < chank)
             return (head->index);
-        }
-        else if (queue -> position >= i && queue ->position < j)
-        {
+        else if (queue -> position >= y && queue ->position < chank)
             return (queue->index);
-        }
         else
         {
             head = head->next;
-            queue = ft_lstlast(head);
+            queue = queue->prev;
         }
     }
     return (0);
 }
 
-void    check_position_moves(t_list **b, t_list **a, int size, int x, int y)
+void    check_position_moves(t_list **b, t_list **a, int size, int y, int chank)
 {
     int i;
     t_list  *head;
 
     head = *a;
 
-    i = 10;
-    i = find_from_top_bottom(*a, 0, 1); 
+    i = find_from_top_bottom(*a, y, chank); 
     while(head ->index != i)
     {
-        // printf("---%d---\n", head->index);
-        if (i <= size /2)
+        if (i <= size / 2)
             ft_rotate(a);
         else
             ft_re_rotate(a);
         head = *a;
     }
     ft_push(a, b);
-    if ((*b)->position < x + y / 2 && ft_lstsize(*b) > 1)
+    if ((*b)->position < y + chank / 2 && ft_lstsize(*b) > 1)
         ft_rotate(b);
-    // while(*a)
-	// {
-	// 	printf("%d\n", (*a) ->index);
-	// 	*a = (*a) ->next;
-	// }
-    ft_get_index(*a);
-    ft_get_position(*a);
-    // printf("------\n");
-    // while(*a)
-	// {
-	// 	printf("%d\n", (*a) ->index);
-	// 	*a = (*a) ->next;
-	// }
 }
 
-void    algo(t_list *a, t_list  *b, int dev)
+void   algo(t_list **a, t_list  **b, int dev)
 {
     int size;
     int chank;
     int y;
     int tmp;
     int tmp1;
+    int x;
 
-    tmp = ft_lstsize(a);
+    tmp = ft_lstsize(*a);
     chank = tmp / dev;
     y = 0;
-    while(y < size)
+    while(y < tmp)
     {
+        x = y;
         tmp1 = chank;
-        while(tmp1 > 0 && ft_lstsize(a) > 0)
+        while(tmp1 > 0 && ft_lstsize(*a) > 0)
         {
-            size = ft_lstsize(a);
-            check_position_moves(&b, &a, size, y, chank + y);
+            size = ft_lstsize(*a);
+            check_position_moves(b, a, size, x, chank + x);
+            ft_get_index(*a);
             y++;
+            tmp1--;
         }
     }
 }
+

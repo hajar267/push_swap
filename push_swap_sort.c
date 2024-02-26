@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/20 12:37:13 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/26 18:19:12 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void    if_4(t_list **a, t_list **b)
 
 void    ft_5args(t_list **a, t_list **b)
 {
-    t_list  *head;
+    // t_list  *head;
     t_list  *tmp;
 
     tmp = *a;

@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/24 12:12:07 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/26 18:53:51 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,6 @@ int	check_empty(char **av)
 	int i = 0;
 	while(av[i])
 	{
-		int j = 0;
 		if (is_empty(av[i]))
 			return (1);
 		i++;
@@ -233,46 +232,41 @@ t_list    *ft_args(char  **av)
 		printf("error dup");
 		exit(0);
 	}
+	ft_get_position(a);
+	ft_get_index(a);
     return (a);
+}
+
+void	printListA(t_list *a)
+{
+	printf("-----Stack A------\n");
+	while (a != NULL)
+	{
+		printf("position : %d / value: %d / index: %d\n", a->position, a->data, a->index);
+		a = a->next;
+	} 
+}
+void	printListB(t_list *a)
+{
+	printf("-----Stack B------\n");
+	while (a != NULL)
+	{
+		printf("position : %d / value: %d / index: %d\n", a->position, a->data, a->index);
+		a = a->next;
+	} 
 }
 
 int main(int    ac, char  **av)
 {
-    t_list  *a;
+	t_list	*a;
 	t_list	*b = NULL;
-	int i;
-	int size;
 
-    if (ac == 1)
-        return (0);
-    else
-        a = ft_args(av);
-	// if (ft_lstsize(a) == 2)
-	// 	ft_swap(&a);
-	// if(ft_lstsize(a) == 3)
-	// 	ft_3args(&a);
-	// if (ft_lstsize(a) == 4 || ft_lstsize(a) == 5)
-	// 	ft_5args(&a,&b);
-
-	// while(a)
-	// {
-	// 	printf("%d\n", a->data);
-	// 	a = a ->next;
-	// }
-	// // ft_re_rotate(&a);
-	// // ft_rotate(&a);
-	// // ft_swap(&a);
-	size = ft_lstsize(a);
-	ft_get_index(a);
-	ft_get_position(a);
-	algo(a, b, 3);
-	while(b)
-	{
-		printf("%d\n", b->data);
-		b = b->next;
+	if ( ac > 2) {
+		a = ft_args(av);
+		algo(&a, &b, 2);
+		printListA(a);
+		printListB(b);
 	}
-	// printf("%d\n", a->data);
-	// printf("%d\n", b->data);
-	// printf("-------\n");
-
+	else
+		printf("Syntax Error");
 }
