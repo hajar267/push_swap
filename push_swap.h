@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/26 18:32:37 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:27:37 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 #include <sys/_types.h>
 #define NULL   __DARWIN_NULL
 #endif
+
+#define STACKA 'a'
+#define STACKB 'b'
 
 typedef struct s_list
 {

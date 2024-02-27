@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:24:18 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/19 11:03:04 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:31:07 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,62 @@
 
 void ft_swap(t_list **a)
 {
-    t_list *head;
-    t_list *root;
+    t_list *first_node;
+    t_list *second_node;
 
-    head = *a;
-    root = head->next;
-    head->next = root->next;
-    root->next = head;
-    *a = root;
+    first_node = *a;
+    second_node = (*a)->next;
+    first_node->next = second_node->next;
+    second_node->next = first_node;
+    second_node ->prev = NULL;
+    first_node ->prev = second_node;
+    first_node ->next ->prev = first_node;
+    *a = second_node;
 }
-
 
 void    ft_push(t_list  **a, t_list  **b)
 {
-    t_list  *head;
-    t_list  *root;
+    t_list  *head_a;
+    t_list  *head_b;
     
     if (!ft_lstsize(*a))
         return ;
-    root = *b;
-    head = *a;
-    *a = head ->next;
-    head ->next = root;
-    *b = head;
+    head_b = *b;
+    head_a = *a;
+    *a = head_a->next;
+    if (*a)
+        (*a)->prev = NULL;
+    head_a->next = head_b;
+    head_a->prev= NULL;
+    if(head_b)
+        head_b->prev = head_a;
+    *b = head_a;
 }
 
 void    ft_rotate(t_list    **a)
 {
-    t_list  *head;
-    t_list  *root;
+    t_list  *first;
+    t_list  *last;
 
-    head = *a;
-    root = ft_lstlast(*a);
-    root ->next = head;
+    first = *a;
+    last = ft_lstlast(*a);
+    last ->next = first;
+    first->prev = last;
     *a = (*a) ->next;
-    head ->next = NULL;
-    
+    (*a)->prev = NULL;
+    first ->next = NULL;
 }
 
 void    ft_re_rotate(t_list **a)
 {
-    t_list  *head;
-    t_list  *root;
-    t_list  *curent;
-    
-    head = *a;
-    root = ft_lstlast(*a);
-    curent = head;
-    while (curent ->next != root)
-        curent = curent ->next;
-    curent ->next = NULL;
-    root ->next = head;
-    *a = root;
+    t_list  *first;
+    t_list  *last;
+
+    first = *a;
+    last = ft_lstlast(*a);
+    last ->next = first;
+    first ->prev = last;
+    last->prev->next = NULL;
+    last->prev = NULL;
+    *a = last;
 }

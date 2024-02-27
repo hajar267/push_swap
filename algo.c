@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/26 19:21:56 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/27 17:37:53 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ int find_from_top_bottom(t_list  *a, int y, int chank)
 void    check_position_moves(t_list **b, t_list **a, int size, int y, int chank)
 {
     int i;
+    int s;
     t_list  *head;
 
     head = *a;
 
-    i = find_from_top_bottom(*a, y, chank); 
+    i = find_from_top_bottom(*a, y, chank);
     while(head ->index != i)
     {
         if (i <= size / 2)
@@ -51,8 +52,9 @@ void    check_position_moves(t_list **b, t_list **a, int size, int y, int chank)
         head = *a;
     }
     ft_push(a, b);
-    if ((*b)->position < y + chank / 2 && ft_lstsize(*b) > 1)
-        ft_rotate(b);
+    s = y + chank;
+    if ((*b)->position < s / 2 && ft_lstsize(*b) > 1)
+        ft_rotate(b); 
 }
 
 void   algo(t_list **a, t_list  **b, int dev)
@@ -60,9 +62,9 @@ void   algo(t_list **a, t_list  **b, int dev)
     int size;
     int chank;
     int y;
-    int tmp;
     int tmp1;
     int x;
+    int tmp;
 
     tmp = ft_lstsize(*a);
     chank = tmp / dev;
@@ -81,4 +83,3 @@ void   algo(t_list **a, t_list  **b, int dev)
         }
     }
 }
-

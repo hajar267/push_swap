@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/26 18:53:51 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/27 17:37:27 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,22 +132,24 @@ t_list	*ft_lstnew(int	content)
 	head = malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
-	head -> data = content;
-	head -> next = NULL ;
+	head->data = content;
+	head->next = NULL;
+	head->prev = NULL;
 	return (head);
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*nod;
+	t_list	*node;
 
 	if (!(*lst))
 	{
 		(*lst) = new;
 		return ;
 	}
-	nod = ft_lstlast((*lst));
-	nod->next = new;
+	node = ft_lstlast((*lst));
+	node->next = new;
+	new->prev = node;
 }
 
 int	ft_check_dup(t_list	*a)
@@ -237,23 +239,14 @@ t_list    *ft_args(char  **av)
     return (a);
 }
 
-void	printListA(t_list *a)
-{
-	printf("-----Stack A------\n");
-	while (a != NULL)
-	{
-		printf("position : %d / value: %d / index: %d\n", a->position, a->data, a->index);
-		a = a->next;
-	} 
-}
 void	printListB(t_list *a)
 {
 	printf("-----Stack B------\n");
 	while (a != NULL)
 	{
-		printf("position : %d / value: %d / index: %d\n", a->position, a->data, a->index);
+		printf("data : %d \n", a->data);
 		a = a->next;
-	} 
+	}
 }
 
 int main(int    ac, char  **av)
@@ -264,7 +257,7 @@ int main(int    ac, char  **av)
 	if ( ac > 2) {
 		a = ft_args(av);
 		algo(&a, &b, 2);
-		printListA(a);
+		printListB(a);
 		printListB(b);
 	}
 	else
