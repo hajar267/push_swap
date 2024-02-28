@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/28 12:28:12 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/28 20:29:55 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,15 +253,13 @@ int main(int    ac, char  **av)
 {
 	t_list	*a;
 	t_list	*b = NULL;
-	int i;
 
 	if ( ac > 2) {
 		a = ft_args(av);
 		algo(&a, &b, 2);
+		ft_push_back(&a, &b);
 		printListB(a);
 		printListB(b);
-		i = ft_biggest_one(b);
-		printf("%d\n", i);
 	}
 	else
 		printf("Syntax Error");

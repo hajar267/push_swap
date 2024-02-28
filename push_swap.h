@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/28 12:03:15 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/28 20:28:57 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ int find_from_top_bottom(t_list  *a, int i, int j);
 void    check_position_moves(t_list **b, t_list **a, int size, int x, int y);
 void   algo(t_list **a, t_list **b, int dev);
 int ft_biggest_one(t_list   *b);
+void    ft_push_back(t_list **a, t_list **b);
 
 #endif
