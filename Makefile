@@ -3,7 +3,7 @@ CC        = cc
 FLAGS     = -Wall -Wextra -Werror
 RM        = rm -f -r
 OBJDIR    = .obj
-FILES     = parse algo push_swap_sort rules utils
+FILES     = parse algo push_swap_sort rules utils push_back
 SRC       = $(FILES:=.c)
 OBJ       = $(addprefix $(OBJDIR)/, $(FILES:=.o))
 INCLUEDES = push_swap.h

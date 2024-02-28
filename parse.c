@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/27 17:37:27 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/28 12:28:12 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,7 +244,7 @@ void	printListB(t_list *a)
 	printf("-----Stack B------\n");
 	while (a != NULL)
 	{
-		printf("data : %d \n", a->data);
+		printf("data : %d /// index : %d\n", a->data, a->index);
 		a = a->next;
 	}
 }
@@ -253,12 +253,15 @@ int main(int    ac, char  **av)
 {
 	t_list	*a;
 	t_list	*b = NULL;
+	int i;
 
 	if ( ac > 2) {
 		a = ft_args(av);
 		algo(&a, &b, 2);
 		printListB(a);
 		printListB(b);
+		i = ft_biggest_one(b);
+		printf("%d\n", i);
 	}
 	else
 		printf("Syntax Error");

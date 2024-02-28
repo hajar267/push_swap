@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/26 18:19:12 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/28 11:45:03 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,23 @@ void    ft_3args(t_list **a)
 
 int ft_get_position_small(t_list    *a)
 {
+    t_list  *second;
     t_list  *head;
-    t_list  *tmp;
     int i = 0;
     int j = 1;
-    tmp = a;
-    head = (tmp)->next;
-        while (head)
+    head = a;
+    second = (head)->next;
+        while (second)
         {
-            if (tmp->data < head ->data)
+            if (head->data < second ->data)
             {
-                head = head ->next;
+                second = second ->next;
                 j++;
             }
             else
             {
-                tmp = head;
-                head = head ->next;
+                head = second;
+                second = second ->next;
                 i = j;
                 j++;
             }
@@ -161,7 +161,6 @@ void    ft_get_position(t_list  *a)
   int j;
   
   head = a;
-  j = 0;
   while(head)
   {
     j = 0;
