@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:38:16 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 10:52:33 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 22:13:19 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void    ft_push_back(t_list **a, t_list **b)
     int     i;
     int     y;
     int     size;
-
     head = *b;
     y = 0;
     size = ft_lstsize(*b);
@@ -59,3 +58,4 @@ void    ft_push_back(t_list **a, t_list **b)
         y++;
     }
 }
+

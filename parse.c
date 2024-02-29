@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 12:34:19 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 23:44:12 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,14 +215,21 @@ t_list    *ft_args(char  **av)
     {
         tmp = ft_strjoin(av[i], " ");
         str = ft_strjoin(str, tmp);
+		// printf("adress: %p\n", ft_strjoin(str, tmp));
+		// printf("adress: %p\n", str);
+		// there is a leaks in str but i don't know how fixed it without segfault
         free (tmp);
         i++;
     }
     argv = ft_split(str, ' ');
+	free (str);
+	// return(NULL);
     i = 0;
     while(argv[i])
 	{
-        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
+        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i])));
+		free(argv[i]);
+		i++;
 	}
 	if (ft_check_sort(a) == 1)
 	{
@@ -235,7 +242,7 @@ t_list    *ft_args(char  **av)
 		exit(0);
 	}
 	ft_get_position(a);
-	ft_get_index(a);
+	ft_get_index(a);    
     return (a);
 }
 
@@ -249,6 +256,10 @@ void	printListB(t_list *a)
 	}
 }
 
+void	lk()
+{
+	system("leaks a.out");
+}
 int main(int    ac, char  **av)
 {
 	t_list	*a;
@@ -258,13 +269,7 @@ int main(int    ac, char  **av)
 	if ( ac > 2) {
 		a = ft_args(av);
 		if (ft_lstsize(a) == 2)
-		{
-			
-		printf("jj\n");
-		printf("%d\n", a->data);
-		printf("%d\n", a->next->data);
 			ft_swap(&a, 'a');
-		}
 		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
 			ft_5args(&a, &b);
 		else
@@ -272,10 +277,11 @@ int main(int    ac, char  **av)
 			algo(&a, &b, 4);
 			ft_push_back(&a, &b);
 		}
+		lk();
 		// i = ft_biggest_one(b);
 		// printListB(a);
 		// printListB(b);
 	}
-	else
-		printf("Syntax Error");
+	// else
+	// 	printf("Syntax Error");
 }
