@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/28 20:28:57 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 10:40:29 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int	ft_check_dup(t_list *a);
 int	ft_check_dup_int(t_list	*a);
-void    ft_swap(t_list  **a);
-void    ft_push(t_list  **a, t_list  **b);
-void    ft_rotate(t_list    **a);
+void    ft_swap(t_list  **a, char c);
+void    ft_push(t_list  **a, t_list  **b, char c, char z);
+void    ft_rotate(t_list    **a, char c);
 t_list	*ft_lstlast(t_list *lst);
-void    ft_re_rotate(t_list **a);
+void    ft_re_rotate(t_list **a, char c);
 void    ft_3args(t_list **a);
 int	ft_lstsize(t_list *lst);
 int ft_get_position_small(t_list    *a);

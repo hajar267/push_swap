@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/28 11:45:03 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 10:49:09 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ void    ft_3args(t_list **a)
         if ((*a)->data > head ->data)
         {
             if ((*a)->next->data < head ->next->data && (*a) ->data < head->next->data)
-                ft_swap(a);
+                ft_swap(a, 'a');
             else if((*a)->next->data < head ->next->data && (*a) ->data > head->next->data)
-                ft_rotate(a);
+                ft_rotate(a, 'a');
             else if((*a)->next->data > head ->next->data && (*a) ->data > head->next->data)
                 {
-                    ft_rotate(a);
-                    ft_swap(a);
+                    ft_rotate(a, 'a');
+                    ft_swap(a, 'a');
                 }
         }
         else
         {
             if ((*a)->data < head ->next->data)
             {
-                ft_re_rotate(a);
-                ft_swap(a);
+                ft_re_rotate(a, 'a');
+                ft_swap(a, 'a');
             }
             else if ((*a)->data > head ->next->data)
-                ft_re_rotate(a);
+                ft_re_rotate(a, 'a');
         }
     }
 
@@ -69,50 +69,50 @@ int ft_get_position_small(t_list    *a)
 void    if_5(t_list **a, t_list **b)
 {
     if (ft_get_position_small(*a) == 0)
-        ft_push(a, b);
+        ft_push(a, b, 'a', 'b');
     else if (ft_get_position_small(*a) == 1)
     {
-        ft_rotate(a);
-        ft_push(a, b);
+        ft_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
     else if (ft_get_position_small(*a) == 2)
     {
-        ft_rotate(a);
-        ft_rotate(a);
-        ft_push(a, b);
+        ft_rotate(a, 'a');
+        ft_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
     else if (ft_get_position_small(*a) == 3)
     {
-        ft_re_rotate(a);
-        ft_re_rotate(a);
-        ft_push(a, b);
+        ft_re_rotate(a, 'a');
+        ft_re_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
     else
     {
-        ft_re_rotate(a);
-        ft_push(a, b);
+        ft_re_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
 }
 
 void    if_4(t_list **a, t_list **b)
 {
     if (ft_get_position_small(*a) == 0)
-        ft_push(a, b);
+        ft_push(a, b, 'a', 'b');
     else if (ft_get_position_small(*a) == 1)
     {
-        ft_rotate(a);
-        ft_push(a, b);
+        ft_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
     else if (ft_get_position_small(*a) == 2)
     {
-        ft_rotate(a);
-        ft_rotate(a);
-        ft_push(a, b);
+        ft_rotate(a, 'a');
+        ft_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
     else
     {
-        ft_re_rotate(a);
-        ft_push(a, b);
+        ft_re_rotate(a, 'a');
+        ft_push(a, b, 'a', 'b');
     }
 }
 
@@ -134,8 +134,8 @@ void    ft_5args(t_list **a, t_list **b)
     }
     else
         ft_3args(a);
-    ft_push(b, a);
-    ft_push(b, a);
+    ft_push(b, a, 'b', 'a');
+    ft_push(b, a, 'b','a');
 }
 
 

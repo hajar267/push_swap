@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:38:16 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/28 20:31:50 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 10:52:33 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,16 @@ void    ft_push_back(t_list **a, t_list **b)
     while(size > y)
     {
         i = ft_biggest_one(*b);
-        while ((*b)->position != i)
+        if ((*a))
+        while (head->index != i)
         {
             if (i <= ft_lstsize(*b)/2)
-                ft_rotate(b);
+                ft_rotate(b, 'b');
             else
-                ft_re_rotate(b);
+                ft_re_rotate(b, 'b');
+            head = *b;
         }
-        ft_push (b, a);
+        ft_push (b, a, 'b', 'a');
         y++;
     }
 }

@@ -6,13 +6,13 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:24:18 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/27 15:31:07 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 11:14:35 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void ft_swap(t_list **a)
+void ft_swap(t_list **a, char c)
 {
     t_list *first_node;
     t_list *second_node;
@@ -23,11 +23,16 @@ void ft_swap(t_list **a)
     second_node->next = first_node;
     second_node ->prev = NULL;
     first_node ->prev = second_node;
-    first_node ->next ->prev = first_node;
+    printf("kaka\n");
+    // first_node ->next ->prev = first_node;
     *a = second_node;
+    if (c == 'a')
+        write (1, "sa\n", 3);
+    else
+        write(1, "sb\n", 3);
 }
 
-void    ft_push(t_list  **a, t_list  **b)
+void    ft_push(t_list  **a, t_list  **b, char c, char z)
 {
     t_list  *head_a;
     t_list  *head_b;
@@ -44,9 +49,13 @@ void    ft_push(t_list  **a, t_list  **b)
     if(head_b)
         head_b->prev = head_a;
     *b = head_a;
+    if (c == 'a' && z == 'b')
+        write (1, "pb\n", 3);
+    else
+        write (1, "pa\n", 3);
 }
 
-void    ft_rotate(t_list    **a)
+void    ft_rotate(t_list    **a, char c)
 {
     t_list  *first;
     t_list  *last;
@@ -58,9 +67,13 @@ void    ft_rotate(t_list    **a)
     *a = (*a) ->next;
     (*a)->prev = NULL;
     first ->next = NULL;
+    if (c == 'a')
+        write (1, "ra\n", 3);
+    else
+        write (1, "rb\n", 3);
 }
 
-void    ft_re_rotate(t_list **a)
+void    ft_re_rotate(t_list **a, char c)
 {
     t_list  *first;
     t_list  *last;
@@ -72,4 +85,8 @@ void    ft_re_rotate(t_list **a)
     last->prev->next = NULL;
     last->prev = NULL;
     *a = last;
+    if (c == 'a')
+        write (1, "rra\n", 4);
+    else
+        write (1, "rrb\n", 4);
 }

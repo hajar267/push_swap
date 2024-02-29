@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/28 20:29:55 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 11:27:31 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,11 +253,26 @@ int main(int    ac, char  **av)
 {
 	t_list	*a;
 	t_list	*b = NULL;
+	// int i = 0;
 
 	if ( ac > 2) {
 		a = ft_args(av);
-		algo(&a, &b, 2);
-		ft_push_back(&a, &b);
+		if (ft_lstsize(a) == 2)
+		{
+			
+		printf("jj\n");
+		printf("%d\n", a->data);
+		printf("%d\n", a->next->data);
+			ft_swap(&a, 'a');
+		}
+		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
+			ft_5args(&a, &b);
+		else
+		{
+			algo(&a, &b, 5);
+			ft_push_back(&a, &b);
+		}
+		// i = ft_biggest_one(b);
 		printListB(a);
 		printListB(b);
 	}

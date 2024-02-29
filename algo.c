@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/27 17:37:53 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 10:45:30 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void    check_position_moves(t_list **b, t_list **a, int size, int y, int chank)
     while(head ->index != i)
     {
         if (i <= size / 2)
-            ft_rotate(a);
+            ft_rotate(a, 'a');
         else
-            ft_re_rotate(a);
+            ft_re_rotate(a, 'a');
         head = *a;
     }
-    ft_push(a, b);
+    ft_push(a, b,'a' ,'b');
     s = y + chank;
     if ((*b)->position < s / 2 && ft_lstsize(*b) > 1)
-        ft_rotate(b); 
+        ft_rotate(b, 'b'); 
 }
 
 void   algo(t_list **a, t_list  **b, int dev)
