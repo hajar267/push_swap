@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 11:27:31 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/02/29 12:34:19 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,12 +269,12 @@ int main(int    ac, char  **av)
 			ft_5args(&a, &b);
 		else
 		{
-			algo(&a, &b, 5);
+			algo(&a, &b, 4);
 			ft_push_back(&a, &b);
 		}
 		// i = ft_biggest_one(b);
-		printListB(a);
-		printListB(b);
+		// printListB(a);
+		// printListB(b);
 	}
 	else
 		printf("Syntax Error");
