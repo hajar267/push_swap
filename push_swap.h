@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 12:35:14 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 19:12:39 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	*ft_strjoin(char const *s1, char const *s2); //
 int	re_place(char **array, const char *tr, char c); //
 int	ft_lstsize(t_list *lst); //
 t_list	*ft_lstlast(t_list *lst); //
+void    ft_5args(t_list **a, t_list **b); //
 t_list    *ft_args(char  **av);
 int	somft(char	*str, int i, int sign);
 int	ft_atoi(char *str);

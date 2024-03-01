@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 12:42:54 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 19:07:50 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +233,7 @@ int main(int    ac, char  **av)
 		if (ft_lstsize(a) == 2)
 			ft_swap(&a, 'a');
 		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
-			ft_5args(&a, &b);
+			ft_5(&a, &b);
 		else
 		{
 			algo(&a, &b, 5);

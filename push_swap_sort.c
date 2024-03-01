@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 10:49:09 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 19:13:27 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,78 +66,29 @@ int ft_get_position_small(t_list    *a)
         return (i);
 }
 
-void    if_5(t_list **a, t_list **b)
-{
-    if (ft_get_position_small(*a) == 0)
-        ft_push(a, b, 'a', 'b');
-    else if (ft_get_position_small(*a) == 1)
-    {
-        ft_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-    else if (ft_get_position_small(*a) == 2)
-    {
-        ft_rotate(a, 'a');
-        ft_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-    else if (ft_get_position_small(*a) == 3)
-    {
-        ft_re_rotate(a, 'a');
-        ft_re_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-    else
-    {
-        ft_re_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-}
-
-void    if_4(t_list **a, t_list **b)
-{
-    if (ft_get_position_small(*a) == 0)
-        ft_push(a, b, 'a', 'b');
-    else if (ft_get_position_small(*a) == 1)
-    {
-        ft_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-    else if (ft_get_position_small(*a) == 2)
-    {
-        ft_rotate(a, 'a');
-        ft_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-    else
-    {
-        ft_re_rotate(a, 'a');
-        ft_push(a, b, 'a', 'b');
-    }
-}
-
 void    ft_5args(t_list **a, t_list **b)
 {
-    // t_list  *head;
-    t_list  *tmp;
+    t_list  *head;
+    int i;
 
-    tmp = *a;
-    if (ft_lstsize(*a) == 5)
+    head = *a;
+    while (ft_lstsize(*a) > 3)
     {
-        if_5(a , b);
-        ft_5args(a, b);
+        ft_get_index(*a);
+        i = ft_get_position_small(*a);
+        if (head->index != i)
+        {
+            if (i <= ft_lstsize(*a) / 2)
+                ft_rotate(a, 'a');
+            else
+                ft_re_rotate(a, 'a');
+        }
+        else
+            ft_push(a, b, 'a', 'b');
+        head = *a;
     }
-    else if (ft_lstsize(*a) == 4)
-    {
-        if_4(a, b);
-        ft_5args(a, b);
-    }
-    else
-        ft_3args(a);
-    ft_push(b, a, 'b', 'a');
-    ft_push(b, a, 'b','a');
+    ft_3args(a);
 }
-
 
 void ft_get_index(t_list    *a)
 {
@@ -179,6 +130,3 @@ void    ft_get_position(t_list  *a)
     head = head->next;
   }
 }
-
-
-

@@ -6,7 +6,16 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 12:36:50 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 19:18:08 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"push_swap.h"
+
+void    ft_3(t_list **a)
+{
+    t_list  *head;
+
+    head = *a;
+    
+}
