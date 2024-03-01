@@ -6,40 +6,11 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 01:42:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 23:42:20 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:31:06 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-char	*ft_strdup(const char *s)
-{
-	size_t		len ;
-	char		*str;
-	int			i;
-
-	i = 0;
-	len = ft_strlen((char *)s);
-	str = malloc(len +1);
-	if (!str)
-		return (NULL);
-	while (s[i])
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
 
 int	ft_compt_word(char const *st, char t)
 {

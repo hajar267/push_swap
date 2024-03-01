@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:24:18 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 23:20:27 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:32:52 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void ft_swap(t_list **a, char c)
     second_node->next = first_node;
     second_node ->prev = NULL;
     first_node ->prev = second_node;
-    // first_node ->next ->prev = first_node;
     *a = second_node;
     if (c == 'a')
         write (1, "sa\n", 3);

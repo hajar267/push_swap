@@ -6,27 +6,11 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/02/29 23:44:12 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:42:54 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-
-int	ft_lstsize(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	if (!lst)
-		return (0);
-	while (lst != NULL)
-	{
-		lst = lst -> next;
-		i++;
-	}
-	return (i);
-}
 
 int	ft_check_sort(t_list	*a)
 {
@@ -114,28 +98,6 @@ int	ft_atoi(char *str)
 			i++;
 	som = somft(str, i, sign);
 	return (som);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-t_list	*ft_lstnew(int	content)
-{
-	t_list	*head;
-
-	head = malloc(sizeof(t_list));
-	if (!head)
-		return (NULL);
-	head->data = content;
-	head->next = NULL;
-	head->prev = NULL;
-	return (head);
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
@@ -274,10 +236,10 @@ int main(int    ac, char  **av)
 			ft_5args(&a, &b);
 		else
 		{
-			algo(&a, &b, 4);
+			algo(&a, &b, 5);
 			ft_push_back(&a, &b);
 		}
-		lk();
+		// lk();
 		// i = ft_biggest_one(b);
 		// printListB(a);
 		// printListB(b);
