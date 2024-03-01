@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 19:12:39 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:52:30 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,20 @@ int	re_place(char **array, const char *tr, char c); //
 int	ft_lstsize(t_list *lst); //
 t_list	*ft_lstlast(t_list *lst); //
 void    ft_5args(t_list **a, t_list **b); //
-t_list    *ft_args(char  **av);
-int	somft(char	*str, int i, int sign);
-int	ft_atoi(char *str);
-t_list  **place(char  **av);
-t_list	*ft_lstnew(int content);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-int	ft_check_dup(t_list *a);
-int	ft_check_dup_int(t_list	*a);
+int ft_get_position_small(t_list    *a); //
+void    ft_3args(t_list **a); //
+void ft_get_index(t_list    *a); //
+void    ft_get_position(t_list  *a); //
+int	ft_check_sort(t_list	*a); //
+int	ft_check_dup(t_list	*a); //
+int	check_empty(char **av); //
+void	ft_lstadd_back(t_list **lst, t_list *new); //
+int	somft(char	*str, int i, int sign); //
+int	ft_atoi(char *str); //
+t_list    *ft_args(char  **av); //
+t_list  *norm(char   **argv, int i); //
+t_list	*ft_lstnew(int	content); //
+
 void    ft_swap(t_list  **a, char c);
 void    ft_push(t_list  **a, t_list  **b, char c, char z);
 void    ft_rotate(t_list    **a, char c);
