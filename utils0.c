@@ -6,12 +6,11 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:30:24 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 12:36:07 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:14:18 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
-
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -67,7 +66,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-t_list	*ft_lstnew(int	content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*head;
 

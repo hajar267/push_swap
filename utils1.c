@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 01:42:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 12:31:06 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:15:06 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
 int	ft_compt_word(char const *st, char t)
 {
@@ -104,8 +104,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	if (s1 == NULL)
 		return (ft_strdup(s2));
-    if (s2 == NULL)
-        return (ft_strdup(s1));
+	if (s2 == NULL)
+		return (ft_strdup(s1));
 	str = (char *)malloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1);
 	if (!str)
 		return (NULL);

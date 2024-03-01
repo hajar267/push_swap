@@ -6,13 +6,13 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 21:17:48 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:18:32 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int	ft_check_sort(t_list	*a)
+int	ft_check_sort(t_list *a)
 {
 	t_list	*head;
 
@@ -32,7 +32,7 @@ int	ft_check_sort(t_list	*a)
 	return(1);
 }
 
-int	ft_check_dup(t_list	*a)
+int	ft_check_dup(t_list *a)
 {
 	t_list	*head;
 
@@ -52,27 +52,27 @@ int	ft_check_dup(t_list	*a)
 	return (1);
 }
 
-int check_empty(char    **av)
+int check_empty(char **av)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (av[i])
-    {
-        j = 0;
-        while (av[i][j])
-        {
-            if (av[i][j] == ' '|| (av[i][j] >= 9 && av[i][j] <= 13))
-                j++;
-            else
-                break;
-        }
-        if (!av[i][j])
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] == ' '|| (av[i][j] >= 9 && av[i][j] <= 13))
+				j++;
+			else
+				break;
+		}
+		if (!av[i][j])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	somft(char	*str, int i, int sign)
