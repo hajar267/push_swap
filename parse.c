@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/03 10:57:38 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/03 15:10:24 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,22 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	node->next = new;
 	new->prev = node;
 }
+void ft_free_array(char	**array)
+{
+	int i;
+
+	i = 0;
+	while(array[i])
+		free(array[i++]);
+	free(array);
+}
 t_list  *norm(char   **argv, int i)
 {
     t_list  *a;
 
     while (argv[i])
-    {
-        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i])));
-        free(argv[i]);
-        i++;
-    }
+        ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
+	ft_free_array(argv);
     if (ft_check_sort(a) == 1)
         exit(write (2, "error\n", 6));
     if (ft_check_dup(a) == 0)
@@ -68,17 +74,24 @@ t_list    *ft_args(char  **av)
     return (norm(argv, 0));
 }
 
-void	printfstackB(t_list	*a)
-{
-	while(a)
-	{
-	printf("------stack a-----\n%d\n", a->data);
-	a = a->next;
-	}
-}
+
 void	lk()
 {
 	system("leaks a.out");
+}
+void	ft_free(t_list	*b)
+{
+	t_list	*head;
+
+	head = b;
+	if (!b)
+		return ;
+	while (head->next)
+	{
+		free(head);
+		head = head->next;
+	}
+	free(b);
 }
 int main(int    ac, char  **av)
 {
@@ -98,7 +111,8 @@ int main(int    ac, char  **av)
 			algo(&a, &b, 5);
 			ft_push_back(&a, &b);
 		}
-		printfstackB(a);
+		ft_free(b);
 		lk();
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/03 10:48:19 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/03 14:28:18 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,47 +84,47 @@ void   algo(t_list **a, t_list  **b, int dev)
     }
 }
 
-// int ft_biggest_one(t_list   *b)
-// {
-//     t_list  *head;
-//     t_list  *second;
-
-//     head = b;
-//     second = b->next;
-//     ft_get_index(b);
-//     while(second)
-//     {
-//         if (head->data > second->data)
-//             second = second->next;
-//         else
-//         {
-//             head = second;
-//             second = second->next;
-//         }
-//     }
-//     return (head->index);
-// }
-
 int ft_biggest_one(t_list   *b)
 {
     t_list  *head;
-    t_list  *queue;
-    
+    t_list  *second;
+
     head = b;
-    queue = ft_lstlast(b);
-    while(head || queue != b)
+    second = b->next;
+    ft_get_index(b);
+    while(second)
     {
-        ft_get_index(b);
-        if (head->position == ft_lstsize(b) - 1)
-            return (head->index);
-        else if (queue->position == ft_lstsize(b) - 1)
-            return (queue->index);
+        if (head->data > second->data)
+            second = second->next;
         else
-            head = head->next;
-            queue = queue->prev;
+        {
+            head = second;
+            second = second->next;
+        }
     }
-    return (0);
+    return (head->index);
 }
+
+// int ft_biggest_one(t_list   *b)
+// {
+//     t_list  *head;
+//     t_list  *queue;
+    
+//     head = b;
+//     queue = ft_lstlast(b);
+//     while(head || queue != b)
+//     {
+//         ft_get_index(b);
+//         if (head->position == ft_lstsize(b) - 1)
+//             return (head->index);
+//         else if (queue->position == ft_lstsize(b) - 1)
+//             return (queue->index);
+//         else
+//             head = head->next;
+//             queue = queue->prev;
+//     }
+//     return (0);
+// }
 
 void    ft_push_back(t_list **a, t_list **b)
 {
