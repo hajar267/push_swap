@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:18:05 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/03 14:28:18 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/03 21:24:01 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ int find_from_top_bottom(t_list  *a, int y, int chank)
     {
         if (head ->position >= y && head ->position < chank)
             return (head->index);
-        else if (queue -> position >= y && queue ->position < chank)
+        if (queue -> position >= y && queue ->position < chank)
             return (queue->index);
-        else
-        {
-            head = head->next;
-            queue = queue->prev;
-        }
+        head = head->next;
+        queue = queue->prev;
     }
     return (0);
 }
@@ -94,61 +91,31 @@ int ft_biggest_one(t_list   *b)
     ft_get_index(b);
     while(second)
     {
-        if (head->data > second->data)
-            second = second->next;
-        else
-        {
+        if (head->data < second->data)
             head = second;
-            second = second->next;
-        }
+        second = second->next;
     }
     return (head->index);
 }
 
-// int ft_biggest_one(t_list   *b)
-// {
-//     t_list  *head;
-//     t_list  *queue;
-    
-//     head = b;
-//     queue = ft_lstlast(b);
-//     while(head || queue != b)
-//     {
-//         ft_get_index(b);
-//         if (head->position == ft_lstsize(b) - 1)
-//             return (head->index);
-//         else if (queue->position == ft_lstsize(b) - 1)
-//             return (queue->index);
-//         else
-//             head = head->next;
-//             queue = queue->prev;
-//     }
-//     return (0);
-// }
-
 void    ft_push_back(t_list **a, t_list **b)
 {
-    t_list  *head;
     int     i;
-    int     y;
     int     size;
-    head = *b;
-    y = 0;
+
     size = ft_lstsize(*b);
-    while(size > y)
+    while(size)
     {
         i = ft_biggest_one(*b);
-        // if ((*a))
-        while (head->index != i)
+        while ((*b)->index != i)
         {
             if (i < ft_lstsize(*b)/2)
                 ft_rotate(b, 'b');
             else
                 ft_re_rotate(b, 'b');
-            head = *b;
         }
         ft_push (b, a, 'b', 'a');
-        y++;
+        size--;
     }
 }
 // prob in push back

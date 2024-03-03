@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   checker_parse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/03 21:05:25 by hfiqar           ###   ########.fr       */
+/*   Created: 2024/03/03 22:32:00 by hfiqar            #+#    #+#             */
+/*   Updated: 2024/03/03 22:45:28 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,53 +73,13 @@ t_list    *ft_args(char  **av)
 	free (str);
     return (norm(argv, 0));
 }
-
-
-void	lk()
+int main(int ac, char **av)
 {
-	system("leaks a.out");
+    t_list  *a;
+    t_list  *b;
+    if (ac < 2)
+        return(0);
+    a = ft_args(av);
+    write(0,"hajar", 5);
+    
 }
-void	ft_free(t_list	*b)
-{
-	t_list	*head;
-
-	head = b;
-	if (!b)
-		return ;
-	while (head->next)
-	{
-		free(head);
-		head = head->next;
-	}
-	free(b);
-}
-int main(int    ac, char  **av)
-{
-	t_list	*a;
-	t_list	*b = NULL;
-	// int i = 0;
-
-	if ( ac > 2) 
-	{
-		a = ft_args(av);
-		if (ft_lstsize(a) == 2)
-			ft_swap(&a, 'a');
-		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
-			ft_5args(&a, &b);
-		else
-		{
-			algo(&a, &b, 5);
-			ft_push_back(&a, &b);
-		}
-		// while(a)
-		// {
-		// 	printf("%d ", a->data);
-		// 	a=a->next;
-		// }
-		
-		ft_free(b);
-		// lk();
-		
-	}
-}
-
