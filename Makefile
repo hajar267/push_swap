@@ -1,9 +1,9 @@
-NAME      = push_
+NAME      = push_swap
 CC        = cc
 FLAGS     = -Wall -Wextra -Werror
 RM        = rm -f -r
 OBJDIR    = .obj
-FILES     = parse algo push_swap_sort rules utils push_back
+FILES     = parse algo push_swap_sort rules utils0 utils1 utils2
 SRC       = $(FILES:=.c)
 OBJ       = $(addprefix $(OBJDIR)/, $(FILES:=.o))
 INCLUEDES = push_swap.h

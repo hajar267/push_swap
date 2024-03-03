@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 22:08:06 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/03 10:57:38 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ t_list    *ft_args(char  **av)
     return (norm(argv, 0));
 }
 
+void	printfstackB(t_list	*a)
+{
+	while(a)
+	{
+	printf("------stack a-----\n%d\n", a->data);
+	a = a->next;
+	}
+}
 void	lk()
 {
 	system("leaks a.out");
@@ -90,6 +98,7 @@ int main(int    ac, char  **av)
 			algo(&a, &b, 5);
 			ft_push_back(&a, &b);
 		}
+		printfstackB(a);
 		lk();
 	}
 }

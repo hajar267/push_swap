@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 22:18:32 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/03 09:38:03 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	somft(char	*str, int i, int sign)
 	}
 	return (x);
 }
+
 
 int	ft_atoi(char *str)
 {
