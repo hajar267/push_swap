@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/04 10:19:22 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/04 22:17:51 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,28 @@
 
 void	ft_3args(t_list **a)
 {
-	t_list	*head;
-
-	head = (*a)->next;
-	if ((*a)->data > head ->data)
+	if ((*a)->data > (*a)->next->data
+		&& (*a)->data < (*a)->next->next->data)
+		ft_swap(a, 'a');
+	else if ((*a)->data > (*a)->next->data
+		&& (*a)->next->data > (*a)->next->next->data)
 	{
-		if ((*a)->next->data < head ->next->data && (*a) ->data < head->next->data)
-			ft_swap(a, 'a');
-		else if ((*a)->next->data < head ->next->data && (*a) ->data > head->next->data)
-			ft_rotate(a, 'a');
-		else if ((*a)->next->data > head ->next->data && (*a) ->data > head->next->data)
-			{
-				ft_rotate(a, 'a');
-				ft_swap(a, 'a');
-			}
+		ft_swap(a, 'a');
+		ft_re_rotate(a, 'a');
 	}
-	else
+	else if ((*a)->data > (*a)->next->data
+		&& (*a)->data > (*a)->next->next->data)
+		ft_rotate(a, 'a');
+	else if ((*a)->data < (*a)->next->data
+		&& (*a)->next->data > (*a)->next->next->data
+		&& (*a)->data < (*a)->next->next->data)
 	{
-		if ((*a)->data < head ->next->data)
-		{
-			ft_re_rotate(a, 'a');
-			ft_swap(a, 'a');
-		}
-		else if ((*a)->data > head ->next->data)
-			ft_re_rotate(a, 'a');
+		ft_swap(a, 'a');
+		ft_rotate(a, 'a');
 	}
+	else if ((*a)->data < (*a)->next->data
+		&& (*a)->next->data > (*a)->next->next->data)
+		ft_re_rotate(a, 'a');
 }
 
 int	ft_get_position_small(t_list *a)
@@ -52,22 +49,22 @@ int	ft_get_position_small(t_list *a)
 	j = 1;
 	head = a;
 	second = (head)->next;
-		while (second)
+	while (second)
+	{
+		if (head->data < second->data)
 		{
-			if (head->data < second->data)
-			{
-				second = second->next;
-				j++;
-			}
-			else
-			{
-				head = second;
-				second = second->next;
-				i = j;
-				j++;
-			}
+			second = second->next;
+			j++;
 		}
-		return (i);
+		else
+		{
+			head = second;
+			second = second->next;
+			i = j;
+			j++;
+		}
+	}
+	return (i);
 }
 
 void	ft_5args(t_list **a, t_list **b)
