@@ -6,11 +6,11 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/03 09:38:03 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/04 10:07:25 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
 int	ft_check_sort(t_list *a)
 {
@@ -19,17 +19,17 @@ int	ft_check_sort(t_list *a)
 	head = NULL;
 	while (a)
 	{
-	head = a ->next;
+		head = a ->next;
 		while (head)
 		{
 			if (a ->data < head ->data)
 				head = head ->next;
 			else
-				return(0);
+				return (0);
 		}
 		a = a ->next;
 	}
-	return(1);
+	return (1);
 }
 
 int	ft_check_dup(t_list *a)
@@ -37,10 +37,10 @@ int	ft_check_dup(t_list *a)
 	t_list	*head;
 
 	head = NULL;
-	while(a)
+	while (a)
 	{
 		head = a->next;
-		while(head)
+		while (head)
 		{
 			if (a->data == head->data)
 				return (0);
@@ -52,7 +52,7 @@ int	ft_check_dup(t_list *a)
 	return (1);
 }
 
-int check_empty(char **av)
+int	check_empty(char **av)
 {
 	int	i;
 	int	j;
@@ -63,10 +63,10 @@ int check_empty(char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if (av[i][j] == ' '|| (av[i][j] >= 9 && av[i][j] <= 13))
+			if (av[i][j] == ' ' || (av[i][j] >= 9 && av[i][j] <= 13))
 				j++;
 			else
-				break;
+				break ;
 		}
 		if (!av[i][j])
 			return (1);
@@ -75,10 +75,10 @@ int check_empty(char **av)
 	return (0);
 }
 
-int	somft(char	*str, int i, int sign)
+int	somft(char *str, int i, int sign)
 {
 	long	som;
-	long x;
+	long	x;
 
 	som = 0;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9' ))
@@ -87,38 +87,31 @@ int	somft(char	*str, int i, int sign)
 		som = (som + str[i]) - 48;
 		i++;
 	}
-	if(str[i])
-	{
-		printf("error !int");
-		exit(0);
-	}
+	if (str[i])
+		exit(write(2, "error\n", 6));
 	x = som * sign;
 	if (x > INT_MAX || x < INT_MIN)
-	{
-		printf("error !!!{int max || int min} ");
-		exit(0);
-	}
+		exit(write(2, "error\n", 6));
 	return (x);
 }
 
-
 int	ft_atoi(char *str)
 {
-	int	som;
+	int		som;
 	long	sign;
-	int	i ;
+	int		i ;
 
 	i = 0;
 	sign = 1;
 	while (str[i] && (str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-		if (str[i] != '\0' && str[i] == '-')
-		{
-			sign = sign * -1;
-			i++;
-		}
-		else if (str[i] != '\0' && str[i] == '+')
-			i++;
+	if (str[i] != '\0' && str[i] == '-')
+	{
+		sign = sign * -1;
+		i++;
+	}
+	else if (str[i] != '\0' && str[i] == '+')
+		i++;
 	som = somft(str, i, sign);
 	return (som);
 }

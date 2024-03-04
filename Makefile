@@ -1,28 +1,26 @@
-NAME      = push_swap
-CC        = cc
-FLAGS     = -Wall -Wextra -Werror
-RM        = rm -f -r
-OBJDIR    = .obj
-FILES     = parse algo push_swap_sort rules utils0 utils1 utils2
-SRC       = $(FILES:=.c)
-OBJ       = $(addprefix $(OBJDIR)/, $(FILES:=.o))
-INCLUEDES = push_swap.h
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/04 11:49:46 by hfiqar            #+#    #+#              #
+#    Updated: 2024/03/04 12:20:34 by hfiqar           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-all: $(NAME)
+NAME =PUSH_SWAP
+HEADER = push_swap.h
+files = algo.c parse.c push_swap_sort.c rules.c utils0.c utils1.c utils2.c 
+obj := $(files:.c=.o)
+cc = CC 
+FLAGS = -Wall -Wextra -Werror
+all:
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
-
-$(OBJDIR)/%.o: %.c $(INCLUEDES)
-	mkdir -p $(dir $@)
-	$(CC) $(FLAGS) -c $< -o $@
-
-clean:
-	$(RM) $(OBJDIR) $(OBJ)
-
-fclean: clean
-	$(RM)  $(NAME)
-
-re: fclean all
-.PHONY: all clean fclean re
-
+%.o:%.c $(HEADER)
+	$(cc) $(FLAGS) -c $< -o $@
+clean
+	rm -rf $(obj)
+re: clean
+.PHONY: all clean re
