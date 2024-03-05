@@ -79,19 +79,23 @@ int	somft(char *str, int i, int sign)
 {
 	int	som;
 	int	x;
+	int p;
 
 	som = 0;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9' ))
 	{
+		p = som;
 		som = som * 10;
 		som = (som + str[i]) - 48;
+		if (p != som / 10)
+			exit(write(2, "Error\n", 6));
 		i++;
 	}
 	if (str[i])
 		exit(write(2, "Error\n", 6));
 	x = som * sign;
-	if (x > INT_MAX || x < INT_MIN)
-		exit(write(2, "Error\n", 6));
+	// if (x > INT_MAX || x < INT_MIN)
+	// 	exit(write(2, "Error\n", 6));
 	return (x);
 }
 
