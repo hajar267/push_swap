@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/04 22:23:49 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 11:37:34 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_list	*norm(char **argv, int i)
 {
 	t_list	*a;
 
+	a = NULL;
 	while (argv[i])
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
 	ft_free_array(argv);
@@ -58,7 +59,9 @@ t_list	*ft_args(char **av)
 	while (av[i])
 	{
 		tmp = ft_strjoin(av[i], " ");
+		char *super_temp = str;
 		str = ft_strjoin(str, tmp);
+		free(super_temp);
 		free (tmp);
 		i++;
 	}
@@ -67,19 +70,22 @@ t_list	*ft_args(char **av)
 	return (norm(argv, 0));
 }
 
-void	ft_free(t_list *b)
+void	ft_free(t_list **b)
 {
-	t_list	*head;
+	t_list	*tmp;
 
-	head = b;
-	if (!b)
+	if (!b || !(*b))
 		return ;
-	while (head->next)
+	while (*b)
 	{
-		free(head);
-		head = head->next;
+		tmp = (*b)->next;
+		free(*b);
+		*b = tmp;
 	}
-	free(b);
+}
+void	lk()
+{
+	system("leaks --fullStacks PUSH_SWAP");
 }
 
 int	main(int ac, char **av)
@@ -87,6 +93,7 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 
+	atexit(lk);
 	b = NULL;
 	if (ac > 2)
 	{
@@ -94,18 +101,25 @@ int	main(int ac, char **av)
 		if (ft_lstsize(a) == 2)
 			ft_swap(&a, 'a');
 		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
+		{
 			ft_5args(&a, &b);
+		}
 		else if (ft_lstsize(a) <= 100)
 		{
 			algo(&a, &b, 5);
 			ft_push_back(&a, &b);
-			ft_free(b);
+			// ft_push_back(&a, &b);
+			ft_free(&a);
+			ft_free(&b);
 		}
 		else if (ft_lstsize(a) > 100)
 		{
-			algo(&a, &b, 10);
+			algo(&a, &b, 9);
 			ft_push_back(&a, &b);
-			ft_free(b);
+			// ft_push_back(&a, &b);
+			ft_free(&b);
+			ft_free(&a);
 		}
 	}
+	
 }

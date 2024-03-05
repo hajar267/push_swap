@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:30:24 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/01 22:14:18 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 10:53:52 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_list	*ft_lstnew(int content)
 {
 	t_list	*head;
 
-	head = malloc(sizeof(t_list));
+	head = malloc(sizeof * head);
 	if (!head)
 		return (NULL);
 	head->data = content;
