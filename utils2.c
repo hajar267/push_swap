@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/05 17:07:24 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 20:57:37 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	check_empty(char **av)
 
 int	somft(char *str, int i, int sign)
 {
-	long	som;
-	long	x;
+	int	som;
+	int	x;
 
 	som = 0;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9' ))
@@ -90,15 +90,19 @@ int	somft(char *str, int i, int sign)
 	if (str[i])
 		exit(write(2, "Error\n", 6));
 	x = som * sign;
-	if (x > INT_MAX || x < INT_MIN)
+	printf("%d\n", x);
+	if (som != x / sign)
+	{
 		exit(write(2, "Error\n", 6));
+	}
+		printf("%d\n");
 	return (x);
 }
 
 int	ft_atoi(char *str)
 {
 	int		som;
-	long	sign;
+	int		sign;
 	int		i ;
 
 	i = 0;
