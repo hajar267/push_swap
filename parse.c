@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/05 11:37:34 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 15:34:37 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	new->prev = node;
 }
 
-t_list	*norm(char **argv, int i)
+t_list	*store(char **argv, int i)
 {
 	t_list	*a;
 
@@ -49,25 +49,23 @@ t_list	*ft_args(char **av)
 	char	*str;
 	char	*tmp;
 	char	**argv;
-	t_list	*a;
+	char	*str_tmp;
 
-	a = NULL;
 	str = NULL;
 	if (check_empty(av) == 1)
 		exit(write(2, "Error\n", 6));
 	i = 1;
 	while (av[i])
 	{
-		tmp = ft_strjoin(av[i], " ");
-		char *super_temp = str;
+		tmp = ft_strjoin(av[i++], " ");
+		str_tmp = str;
 		str = ft_strjoin(str, tmp);
-		free(super_temp);
+		free(str_tmp);
 		free (tmp);
-		i++;
 	}
 	argv = ft_split(str, ' ');
 	free (str);
-	return (norm(argv, 0));
+	return (store(argv, 0));
 }
 
 void	ft_free(t_list **b)
@@ -83,17 +81,12 @@ void	ft_free(t_list **b)
 		*b = tmp;
 	}
 }
-void	lk()
-{
-	system("leaks --fullStacks PUSH_SWAP");
-}
 
 int	main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*b;
 
-	atexit(lk);
 	b = NULL;
 	if (ac > 2)
 	{
@@ -103,23 +96,10 @@ int	main(int ac, char **av)
 		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
 		{
 			ft_5args(&a, &b);
-		}
-		else if (ft_lstsize(a) <= 100)
-		{
-			algo(&a, &b, 5);
-			ft_push_back(&a, &b);
-			// ft_push_back(&a, &b);
-			ft_free(&a);
-			ft_free(&b);
-		}
-		else if (ft_lstsize(a) > 100)
-		{
-			algo(&a, &b, 9);
-			ft_push_back(&a, &b);
-			// ft_push_back(&a, &b);
 			ft_free(&b);
 			ft_free(&a);
 		}
+		else if (ft_lstsize(a) > 5)
+			if_state(a, b);
 	}
-	
 }

@@ -6,12 +6,12 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:29:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/05 10:06:33 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 15:35:22 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -48,9 +48,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 int		somft(char *str, int i, int sign);
 int		ft_atoi(char *str);
 t_list	*ft_args(char **av);
-t_list	*norm(char **argv, int i);
+t_list	*store(char **argv, int i);
 t_list	*ft_lstnew(int content);
 void	ft_free_array(char **array);
+void	ft_free(t_list **b);
 void	ft_swap(t_list **a, char c);
 void	ft_push(t_list **a, t_list **b, char c, char z);
 void	ft_rotate(t_list **a, char c);
@@ -60,5 +61,6 @@ void	check_position_moves(t_list **b, t_list **a, int x, int y);
 void	algo(t_list **a, t_list **b, int dev);
 int		ft_biggest_one(t_list *b);
 void	ft_push_back(t_list **a, t_list **b);
+void	if_state(t_list *a, t_list *b);
 
 #endif

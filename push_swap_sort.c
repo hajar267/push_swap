@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:58:08 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/04 22:17:51 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 14:37:54 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,16 @@ void	ft_3args(t_list **a)
 		ft_re_rotate(a, 'a');
 	}
 	else if ((*a)->data > (*a)->next->data
-		&& (*a)->data > (*a)->next->next->data)
+		&& (*a)->next->data < (*a)->next->next->data)
 		ft_rotate(a, 'a');
 	else if ((*a)->data < (*a)->next->data
-		&& (*a)->next->data > (*a)->next->next->data
 		&& (*a)->data < (*a)->next->next->data)
 	{
 		ft_swap(a, 'a');
 		ft_rotate(a, 'a');
 	}
 	else if ((*a)->data < (*a)->next->data
-		&& (*a)->next->data > (*a)->next->next->data)
+		&& (*a)->data > (*a)->next->next->data)
 		ft_re_rotate(a, 'a');
 }
 
@@ -89,6 +88,8 @@ void	ft_5args(t_list **a, t_list **b)
 		head = *a;
 	}
 	ft_3args(a);
+	ft_push(b, a, 'b', 'a');
+	ft_push(b, a, 'b', 'a');
 }
 
 void	ft_get_index(t_list *a)
