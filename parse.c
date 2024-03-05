@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/05 17:06:53 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 20:45:00 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,14 @@ int	main(int ac, char **av)
 	t_list	*b;
 
 	b = NULL;
-	if (ac > 2)
+	if (ac >= 2)
 	{
 		a = ft_args(av);
 		if (ft_lstsize(a) == 2)
+		{
 			ft_swap(&a, 'a');
+			ft_free(&a);
+		}
 		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 2)
 		{
 			ft_5args(&a, &b);
