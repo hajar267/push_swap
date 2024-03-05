@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:40:27 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/05 15:34:37 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:06:53 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ t_list	*store(char **argv, int i)
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
 	ft_free_array(argv);
 	if (ft_check_sort(a) == 1)
-		exit(write (2, "error\n", 6));
+		exit(0);
 	if (ft_check_dup(a) == 0)
-		exit(write (2, "error\n", 6));
+		exit(write (2, "Error\n", 6));
 	ft_get_position(a);
 	ft_get_index(a);
 	return (a);

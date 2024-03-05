@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/04 22:22:47 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:07:24 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int	somft(char *str, int i, int sign)
 		i++;
 	}
 	if (str[i])
-		exit(write(2, "error\n", 6));
+		exit(write(2, "Error\n", 6));
 	x = som * sign;
 	if (x > INT_MAX || x < INT_MIN)
-		exit(write(2, "error\n", 6));
+		exit(write(2, "Error\n", 6));
 	return (x);
 }
 
