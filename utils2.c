@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:36:49 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/05 20:57:37 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/03/05 21:01:43 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,8 @@ int	somft(char *str, int i, int sign)
 	if (str[i])
 		exit(write(2, "Error\n", 6));
 	x = som * sign;
-	printf("%d\n", x);
-	if (som != x / sign)
-	{
+	if (x > INT_MAX || x < INT_MIN)
 		exit(write(2, "Error\n", 6));
-	}
-		printf("%d\n");
 	return (x);
 }
 
